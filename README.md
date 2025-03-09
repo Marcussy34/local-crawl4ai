@@ -220,6 +220,33 @@ interact with the local filesystem.
 - [Local File Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.localfiletrigger/)
 - [Execute Command](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executecommand/)
 
+### PostgreSQL Configuration
+
+The starter kit uses PostgreSQL with specific credentials that should not be changed:
+
+```bash
+Host: postgres
+Database: postgres
+User: postgres
+Password: password
+```
+
+When setting up PostgreSQL credentials in n8n:
+
+1. Use `postgres` (not localhost) as the host - this is the Docker container name
+2. Use the exact credentials shown above
+3. The database connection is pre-configured within the Docker network
+
+Common troubleshooting:
+
+- If you get "Connection refused", verify you're using `postgres` as the host
+- If you get "Password authentication failed", verify you're using the exact credentials shown above
+- If you need to reset the database, you can use:
+  ```bash
+  docker compose down -v
+  docker compose up -d
+  ```
+
 ## 📜 License
 
 This project is licensed under the Apache License 2.0 - see the

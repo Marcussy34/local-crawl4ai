@@ -87,10 +87,10 @@ cd self-hosted-ai-starter-kit
 Create or edit the `.env` file in the project root directory:
 
 ```bash
-# Database credentials
-POSTGRES_USER=root
+# Database credentials - DO NOT CHANGE THESE VALUES
+POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password
-POSTGRES_DB=n8n
+POSTGRES_DB=postgres
 
 # n8n security
 N8N_ENCRYPTION_KEY=super-secret-key
@@ -99,6 +99,22 @@ N8N_USER_MANAGEMENT_JWT_SECRET=even-more-secret
 # Optional: OpenAI API key if you want to use OpenAI models
 # OPENAI_API_KEY=your-openai-api-key
 ```
+
+> [!IMPORTANT]
+> The PostgreSQL credentials must remain as shown above for compatibility with the n8n container configuration.
+
+### Additional PostgreSQL Setup Steps
+
+After starting the services, configure the PostgreSQL connection in n8n:
+
+1. Go to http://localhost:5678/
+2. Navigate to Credentials
+3. Add new Postgres credentials with these exact values:
+   - Host: `postgres`
+   - Database: `postgres`
+   - User: `postgres`
+   - Password: `password`
+   - Maximum Number of Connections: `100`
 
 ### 3. Start the Core Services
 
