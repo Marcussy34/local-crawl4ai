@@ -287,7 +287,13 @@
       "position": [
         920,
         260
-      ]
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "e7FNP5GyxazQDxSi",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {},
@@ -298,7 +304,13 @@
       "position": [
         1060,
         260
-      ]
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "01GAtQ0copVwRDW4",
+          "name": "Postgres account"
+        }
+      }
     },
     {
       "parameters": {
@@ -325,7 +337,13 @@
       "position": [
         1160,
         460
-      ]
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "e7FNP5GyxazQDxSi",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -338,7 +356,13 @@
       "position": [
         1540,
         340
-      ]
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "e7FNP5GyxazQDxSi",
+          "name": "OpenAi account"
+        }
+      }
     },
     {
       "parameters": {
@@ -360,7 +384,13 @@
       "position": [
         2000,
         580
-      ]
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "wIJCn9eH78fGy3zr",
+          "name": "Supabase account"
+        }
+      }
     },
     {
       "parameters": {
@@ -394,7 +424,13 @@
       "position": [
         1200,
         320
-      ]
+      ],
+      "credentials": {
+        "supabaseApi": {
+          "id": "wIJCn9eH78fGy3zr",
+          "name": "Supabase account"
+        }
+      }
     },
     {
       "parameters": {
@@ -659,8 +695,9 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "f4b548a4-e267-4fba-b2c7-4707cb108cd0",
+  "versionId": "5aebd0a9-3774-491e-86a0-deba28a9fc2f",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
   },
   "id": "RWEwb7KTlCXXZRIy",
