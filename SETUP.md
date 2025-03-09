@@ -19,7 +19,7 @@ This guide provides detailed instructions for setting up the Self-hosted AI Star
 
 1. Install [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop)
 2. During installation, ensure WSL 2 is enabled
-3. After installation, open Docker Desktop and ensure it's running
+3. After installation, open Docker Desktop as administrator and ensure it's running
 
 #### macOS
 
@@ -124,16 +124,63 @@ docker compose --profile cpu up -d
 
 ### 4. Set Up Crawl4AI
 
-Due to platform compatibility issues (Crawl4AI is primarily built for ARM64), we'll run it as a separate container:
+Choose the appropriate command based on your system architecture and GPU availability:
+
+#### For AMD64/x86_64 Systems (Most Windows/Linux PCs)
+
+##### With NVIDIA GPU Support
 
 ```bash
-# Run Crawl4AI with authentication
-docker run -d --name crawl4ai --network self-hosted-ai-starter-kit_demo -p 11235:11235 -e CRAWL4AI_API_TOKEN="mysecrettoken" unclecode/crawl4ai:basic
+# Run Crawl4AI with GPU support
+docker run -d --name crawl4ai \
+  --network self-hosted-ai-starter-kit_demo \
+  -p 11235:11235 \
+  -e CRAWL4AI_API_TOKEN="mysecrettoken" \
+  --gpus all \
+  unclecode/crawl4ai:gpu-amd64
 ```
 
-This warning is normal and can be ignored. The container will run with emulation.
+##### Without GPU (AMD64/x86_64)
 
-### 5. Verify Services Are Running
+```bash
+# Run Crawl4AI without GPU
+docker run -d --name crawl4ai \
+  --network self-hosted-ai-starter-kit_demo \
+  -p 11235:11235 \
+  -e CRAWL4AI_API_TOKEN="mysecrettoken" \
+  unclecode/crawl4ai:amd64
+```
+
+#### For ARM64 Systems (Apple Silicon, etc.)
+
+```bash
+# Run Crawl4AI
+docker run -d --name crawl4ai \
+  --network self-hosted-ai-starter-kit_demo \
+  -p 11235:11235 \
+  -e CRAWL4AI_API_TOKEN="mysecrettoken" \
+  unclecode/crawl4ai:latest
+```
+
+### 5. Verify System Architecture and GPU Support
+
+#### Check System Architecture
+
+```bash
+# Verify your system architecture
+docker version --format '{{.Server.Arch}}'
+```
+
+#### Verify GPU Support (if using GPU version)
+
+```bash
+# For NVIDIA GPU systems
+docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
+```
+
+You should see your GPU information displayed if GPU support is working correctly.
+
+### 6. Verify Services Are Running
 
 ```bash
 docker ps
@@ -147,6 +194,6 @@ You should see containers for:
 - ollama (if using GPU profile)
 - crawl4ai
 
-### 6. Access n8n
+### 7. Access n8n
 
 Open your browser and navigate to:
